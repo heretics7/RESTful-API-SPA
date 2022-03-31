@@ -4,6 +4,9 @@
   "description": "restful-api-spa(aws rds, react, node.js, xml)",
   "main": "server.js",
   "scripts": {
+    "server": "nodemon server.js",
+    "react": "cd spa && npm start",
+    "start":"concurrently --kill-others-on-fail \"npm run server\" \"npm run react\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +20,9 @@
   },
   "homepage": "https://github.com/heretics7/RESTful-API-SPA#readme",
   "devDependencies": {
+    "concurrently": "^7.0.0",
     "express": "^4.17.3",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15"
   }
 }
