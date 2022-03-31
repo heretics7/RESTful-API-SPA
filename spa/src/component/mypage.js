@@ -2,29 +2,45 @@ import React, { useEffect, useState }from 'react';
 import axios from 'axios';
 
 
-function Mypage(){
+const Mypage = (props) => {
     
-    const [ mytext, mytextUpdate ] = useState('미리 세팅한 값')
+    let [ interviewId, interviewIdUpdate ] = useState([]);
+    const [typeData,insertDB] = useState(0);   
 
-    useEffect ( async () => {
+    const interviewDataSetting = async () => {
 
         axios({
-            url : '/router',
-            method : 'GET'
+            url: `/router?botable=${props.botable}`,
+            method : "GET"
         })
-        .then( res => {
-            mytextUpdate(res.data)
-        })
-    }, [] )
+                .then(
+                    (result) => {  
+                        try{
+                            console.log(result);
+                            interviewIdUpdate([...result.data]);
+                            insertDB(result.data[result.data.length - 1].wr_id);
+                        }
+                        catch(err){ console.log(err.message) }
+                    }
+                )
+                .catch( e => { console.log(e +'에러로 통신 제한') }
+                ) 
+    } 
 
-    return(
-        <div>
-            <h3>함수형 컴포넌트</h3>
-            <p>useState에 의해 컴포넌트가 새로고침 된다.</p>
-            <p>get는 axios.get로 응답받는다 : {mytext}</p>
-        </div>
-    )
-
+    useEffect( () => {  interviewDataSetting(); } , [typeData]  )          
+        return (  
+            <div><h2>{ interviewId.length > 0 ? "사전인터뷰" : "데이터 전송 중" }</h2>
+            {
+                interviewId.map(( content, i ) => {
+                    return(
+                        <li>
+                            <h3>{i+1} {content.wr_a}</h3><div>{content.wr_q}</div>
+                        </li>
+                    )
+                })
+            }
+            </div>
+        );     
 };
 
 export default Mypage;
