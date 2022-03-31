@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/heretics7/RESTful-API-SPA#readme",
   "devDependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "mysql": "^2.18.1"
   }
 }
