@@ -1,0 +1,22 @@
+{
+  "name": "restful-api-spa",
+  "version": "1.0.0",
+  "description": "restful-api-spa(aws rds, react, node.js, xml)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heretics7/RESTful-API-SPA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heretics7/RESTful-API-SPA/issues"
+  },
+  "homepage": "https://github.com/heretics7/RESTful-API-SPA#readme",
+  "devDependencies": {
+    "express": "^4.17.3"
+  }
+}
