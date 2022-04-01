@@ -5,26 +5,28 @@ import axios from 'axios';
 const Mypage = (props) => {
     
     let [ interviewId, interviewIdUpdate ] = useState([]);
-    const [typeData,insertDB] = useState(0);   
+    const [ typeData, insertDB ] = useState(0);   
 
     const interviewDataSetting = async () => {
 
-        axios({
-            url: `/router?botable=${props.botable}`,
-            method : "GET"
-        })
-                .then(
-                    (result) => {  
-                        try{
-                            console.log(result);
-                            interviewIdUpdate([...result.data]);
-                            insertDB(result.data[result.data.length - 1].wr_id);
-                        }
-                        catch(err){ console.log(err.message) }
-                    }
-                )
-                .catch( e => { console.log(e +'에러로 통신 제한') }
-                ) 
+        axios(
+            {
+                url: `/router?botable=${props.botable}`,
+                method : "GET"
+            }
+        )
+        .then(
+            (result) => {  
+                try{
+                    console.log(result);
+                    interviewIdUpdate([...result.data]);
+                    insertDB(result.data[result.data.length - 1].wr_id);
+                }
+                catch(err){ console.log('result 타입 확인' + err.message + '/' + typeof result) }
+            }
+        )
+        .catch( e => { console.log(e +'에러로 통신 제한') }
+        ) 
     } 
 
     useEffect( () => {  interviewDataSetting(); } , [typeData]  )          
