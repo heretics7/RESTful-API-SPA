@@ -12,7 +12,7 @@ awsconnect.use(express.json())
 mybatisMapper.createMapper(['./mapper/awssql.xml'])
 var format = { language : 'sql', indent : '  ' }
 
-awsconnect.get('/', (req, res, next) =>{ 
+awsconnect.post('/', (req, res, next) =>{ 
     var params = req.body;
     var query = mybatisMapper.getStatement(
     params.mapper, params.mapper_id, params, format );

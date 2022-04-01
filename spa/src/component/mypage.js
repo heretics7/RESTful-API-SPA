@@ -12,7 +12,7 @@ const Mypage = (props) => {
         axios(
             {
                 url: `/router?type=${props.type}`,
-                method : "GET"
+                method : "POST"
             }
         )
         .then(
