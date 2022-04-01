@@ -11,7 +11,7 @@ const Mypage = (props) => {
 
         axios(
             {
-                url: `/router?botable=${props.botable}`,
+                url: `/router?type=${props.type}`,
                 method : "GET"
             }
         )
@@ -33,10 +33,10 @@ const Mypage = (props) => {
         return (  
             <div><h2>{ interviewId.length > 0 ? "사전인터뷰" : "데이터 전송 중" }</h2>
             {
-                interviewId.map(( content, i ) => {
+                interviewId.map(( sqldata, i ) => {
                     return(
                         <li>
-                            <h3>{i+1} {content.wr_a}</h3><div>{content.wr_q}</div>
+                            <h3>{i+1} {sqldata.wr_a}</h3><div>{sqldata.wr_q}</div>
                         </li>
                     )
                 })

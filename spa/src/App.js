@@ -4,7 +4,7 @@ function App() {
 
   return (
     <div>
-      <Content_mypage botable="interview"></Content_mypage>
+      <Content_mypage type="aws"></Content_mypage>
     </div>
   );
 }
